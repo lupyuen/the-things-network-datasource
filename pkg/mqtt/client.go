@@ -119,12 +119,17 @@ func (c *Client) Subscribe(t string) {
 	if _, ok := c.topics.Load(t); ok {
 		return
 	}
-	log.DefaultLogger.Debug(fmt.Sprintf("Subscribing to MQTT topic: %s", t))
+	//  Subscribe to all topics: "#"
+	//  Previously: log.DefaultLogger.Debug(fmt.Sprintf("Subscribing to MQTT topic: %s", t))
+	log.DefaultLogger.Debug(fmt.Sprintf("Subscribing to MQTT topic: %s", "#"))
 	topic := Topic{
 		path: t,
 	}
 	c.topics.Store(&topic)
-	c.client.Subscribe(t, 0, c.HandleMessage)
+
+	//  Subscribe to all topics: "#"
+	//  Previously: c.client.Subscribe(t, 0, c.HandleMessage)
+	c.client.Subscribe("#", 0, c.HandleMessage)
 }
 
 func (c *Client) Unsubscribe(t string) {
