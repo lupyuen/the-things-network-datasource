@@ -85,9 +85,26 @@ In case of problems, check the __Grafana Log__ at...
 C:\Program Files\GrafanaLabs\grafana\data\log\grafana.log
 ```
 
+(See Grafana Log below)
+
 This Data Source is based on the MQTT data source for Grafana...
 
 -   [github.com/grafana/mqtt-datasource](https://github.com/grafana/mqtt-datasource)
+
+## Grafana Log
+
+```text
+C:\Program Files\GrafanaLabs\grafana\data\log\grafana.log
+
+t=2021-09-21T18:04:52+0800 lvl=info msg="MQTT Connecting" logger=plugins.backend pluginId=the-things-network-datasource
+t=2021-09-21T18:04:53+0800 lvl=dbug msg="Subscribing to MQTT topic: #" logger=plugins.backend pluginId=the-things-network-datasource
+t=2021-09-21T18:04:53+0800 lvl=dbug msg="Client wants to subscribe" logger=live user=1 client=27dba4ff-ccf7-4920-98d4-13cb5cdc377c channel=1/ds/N44EKVN7z/#
+t=2021-09-21T18:04:53+0800 lvl=info msg="Invalid channel ID" logger=live user=1 client=27dba4ff-ccf7-4920-98d4-13cb5cdc377c channel=1/ds/N44EKVN7z/#
+t=2021-09-21T18:05:00+0800 lvl=dbug msg="Scheduling update" logger=alerting.scheduler ruleCount=0
+t=2021-09-21T18:05:02+0800 lvl=dbug msg="Received unknown frontend metric" logger=context userId=1 orgId=1 uname=admin metric=frontend_boot_first_contentful_paint_time_seconds
+t=2021-09-21T18:05:10+0800 lvl=dbug msg="Scheduling update" logger=alerting.scheduler ruleCount=0
+t=2021-09-21T18:05:14+0800 lvl=dbug msg="Received MQTT Message for topic v3/luppy-application@ttn/devices/eui-YOUR_DEVICE_EUI/up" logger=plugins.backend pluginId=the-things-network-datasource
+```
 
 ## MQTT Log
 
