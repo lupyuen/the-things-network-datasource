@@ -88,8 +88,11 @@ func (c *Client) Stream() chan StreamMessage {
 
 func (c *Client) HandleMessage(_ paho.Client, msg paho.Message) {
 	log.DefaultLogger.Debug(fmt.Sprintf("Received MQTT Message for topic %s", msg.Topic()))
-	topic, ok := c.topics.Load(msg.Topic())
+	//  Accept all topics as "all"
+	//  Previously: topic, ok := c.topics.Load(msg.Topic())
+	topic, ok := c.topics.Load("all")
 	if !ok {
+		log.DefaultLogger.Debug(fmt.Sprintf("Topic not found: %s", "all"))
 		return
 	}
 
