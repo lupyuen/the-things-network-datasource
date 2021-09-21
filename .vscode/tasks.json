@@ -11,7 +11,37 @@
         {
             "label": "Build",
             "type": "shell",
-            "command": "yarn build"
+            "windows": {
+                "command": "cmd",
+                "args": [
+                    "/c",
+                    " scripts\\build.cmd && echo ✅ ◾ ️Done! "
+                ]
+            },
+            "osx": {
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "-l",
+                    " yarn build && echo ✅ ◾ ️Done! "
+                ]
+            },
+            "linux": {
+                "command": "bash",
+                "args": [
+                    "-c",
+                    "-l",
+                    " yarn build && echo ✅ ◾ ️Done! "
+                ]
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "clear": true
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
