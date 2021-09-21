@@ -58,7 +58,8 @@ Password: <YOUR_API_KEY>
 Topic: #
 
 ## For a specific device
-Topic: v3/{application id}@{tenant id}/devices/{device id}/up
+## Change luppy-application@ttn to your MQTT Username
+Topic: v3/luppy-application@ttn/devices/{device id}/up
 ```
 
 Based on the MQTT data source for Grafana...
