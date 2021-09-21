@@ -8,9 +8,28 @@ This Grafana Data Source connects to [__The Things Network__](https://www.thethi
 
 -   ["The Things Network: MQTT Server"](https://www.thethingsindustries.com/docs/integrations/mqtt/)
 
-We assume that Message Payloads are encoded in [__CBOR Format__](https://en.wikipedia.org/wiki/CBOR).
+We assume that Message Payloads are encoded in [__CBOR Format__](https://en.wikipedia.org/wiki/CBOR)...
 
-To enable the Data Source, edit...
+```json
+{ "t": 1745 }
+```
+
+This Data Source should be located in the __Grafana Plugins Folder__...
+
+```text
+C:\Program Files\GrafanaLabs\grafana\data\plugins\the-things-network-datasource
+```
+
+To __build the Data Source__...
+
+```bash
+yarn install
+yarn build
+```
+
+(More instructions below)
+
+To __enable the Data Source__, edit...
 
 ```text
 C:\Program Files\GrafanaLabs\grafana\conf\defaults.ini
