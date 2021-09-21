@@ -42,7 +42,7 @@ And set...
 allow_loading_unsigned_plugins = the-things-network-datasource
 ```
 
-__Configure the Data Source__ with these values from The Things Network -> Application -> (Your Application) -> Integrations -> MQTT...
+__Configure the Data Source__ with these values from The Things Network → Application → (Your Application) → Integrations → MQTT...
 
 ```text
 ## Change this to your MQTT Public Address
@@ -54,10 +54,10 @@ Username: luppy-application@ttn
 ## Change this to your API Key
 Password: <YOUR_API_KEY>
 
-## For all topics
+## Subscribe to all topics
 Topic: #
 
-## For a specific device
+## Subscribe to messages for a specific device
 ## Change luppy-application@ttn to your MQTT Username
 Topic: v3/luppy-application@ttn/devices/{device id}/up
 ```
@@ -65,6 +65,59 @@ Topic: v3/luppy-application@ttn/devices/{device id}/up
 Based on the MQTT data source for Grafana...
 
 -   [github.com/grafana/mqtt-datasource](https://github.com/grafana/mqtt-datasource)
+
+## Build Log
+
+```text
+C:\Program Files\GrafanaLabs\grafana\data\plugins\the-things-network-datasource>yarn build 
+yarn run v1.22.11
+$ rm -rf dist && grafana-toolkit plugin:build && mage build:backend
+  Using Node.js v14.17.6
+  Using @grafana/toolkit v8.0.0-beta.3
+√ Preparing
+√ Linting
+ts-jest[config] (WARN) The option `tsConfig` is deprecated and will be removed in ts-jest 27, use `tsconfig` instead
+ PASS  src/handleEvent.test.ts
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   2 passed, 2 total
+Time:        2.521 s
+Ran all test suites with tests matching "".
+√ Running tests
+\ Compiling...  Starting type checking service...
+  Using 1 worker with 2048MB memory limit
+/ Compiling...  
+   Hash: 6b5a018b08c2ac55e195
+  Version: webpack 4.41.5
+  Time: 9050ms
+  Built at: 09/21/2021 3:35:48 PM
+                  Asset       Size  Chunks                   Chunk Names
+           CHANGELOG.md   58 bytes          [emitted]        
+                LICENSE   11.3 KiB          [emitted]        
+              README.md   5.22 KiB          [emitted]        
+           img/mqtt.svg   1.33 KiB          [emitted]        
+              module.js    3.8 KiB       0  [emitted]        module
+  module.js.LICENSE.txt  808 bytes          [emitted]        
+          module.js.map   24.4 KiB       0  [emitted] [dev]  module
+            plugin.json   1.11 KiB          [emitted]        
+  Entrypoint module = module.js module.js.map
+  [0] external "react" 42 bytes {0} [built]
+  [1] external "@grafana/ui" 42 bytes {0} [built]
+  [2] external "lodash" 42 bytes {0} [built]
+  [3] external "@grafana/data" 42 bytes {0} [built]
+  [4] external "@grafana/runtime" 42 bytes {0} [built]
+  [5] ./module.ts + 5 modules 14.5 KiB {0} [built]
+      | ./module.ts 296 bytes [built]
+      | ./datasource.ts 352 bytes [built]
+      | ./ConfigEditor.tsx 2.78 KiB [built]
+      | ./QueryEditor.tsx 658 bytes [built]
+      | ../node_modules/tslib/tslib.es6.js 10 KiB [built]
+      | ./handleEvent.ts 395 bytes [built] 
+  
+√ Compiling...
+Done in 37.51s.
+```
 
 ## TODO: Requirements
 
