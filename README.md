@@ -27,7 +27,7 @@ yarn install
 yarn build
 ```
 
-(More instructions below)
+(See Build Instructions and Build Log below)
 
 To __enable the Data Source__, edit...
 
@@ -40,6 +40,13 @@ And set...
 ```text
 [plugins]
 allow_loading_unsigned_plugins = the-things-network-datasource
+```
+
+To __enable Debug Logs__, set...
+
+```text
+[log]
+level = debug
 ```
 
 __Configure the Data Source__ with these values from The Things Network → Application → (Your Application) → Integrations → MQTT...
@@ -62,7 +69,7 @@ Topic: #
 Topic: v3/luppy-application@ttn/devices/{device id}/up
 ```
 
-To test the MQTT Server...
+To __test the MQTT Server__...
 
 ```
 ## Change au1.cloud.thethings.network to your MQTT Public Address
@@ -70,7 +77,7 @@ To test the MQTT Server...
 mosquitto_sub -h au1.cloud.thethings.network -t "#" -u "luppy-application@ttn" -P "YOUR_API_KEY" -d
 ```
 
-(See the MQTT Log below)
+(See MQTT Log below)
 
 In case of problems, check the __Grafana Log__ at...
 
@@ -78,7 +85,7 @@ In case of problems, check the __Grafana Log__ at...
 C:\Program Files\GrafanaLabs\grafana\data\log\grafana.log
 ```
 
-Based on the MQTT data source for Grafana...
+This Data Source is based on the MQTT data source for Grafana...
 
 -   [github.com/grafana/mqtt-datasource](https://github.com/grafana/mqtt-datasource)
 
