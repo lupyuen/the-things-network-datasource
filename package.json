@@ -1,7 +1,7 @@
 {
-  "name": "grafana-mqtt-datasource",
+  "name": "the-things-network-datasource",
   "version": "0.0.1-dev",
-  "description": "MQTT Datasource Plugin",
+  "description": "The Things Network Datasource Plugin",
   "scripts": {
     "build": "rm -rf dist && grafana-toolkit plugin:build && mage build:backend",
     "test": "grafana-toolkit plugin:test && mage test",
@@ -10,7 +10,7 @@
     "sign": "grafana-toolkit plugin:sign",
     "start": "yarn watch"
   },
-  "author": "Grafana Labs",
+  "author": "Lee Lup Yuen",
   "license": "Apache-2.0",
   "devDependencies": {
     "@grafana/data": "next",

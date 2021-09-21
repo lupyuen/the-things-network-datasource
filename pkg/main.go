@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	if err := datasource.Manage("grafana-mqtt-datasource", plugin.NewMQTTInstance, datasource.ManageOpts{}); err != nil {
+	if err := datasource.Manage("the-things-network-datasource", plugin.NewMQTTInstance, datasource.ManageOpts{}); err != nil {
 		log.DefaultLogger.Error(err.Error())
 		os.Exit(1)
 	}

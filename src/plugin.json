@@ -2,16 +2,16 @@
   "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
   "type": "datasource",
   "name": "MQTT",
-  "id": "grafana-mqtt-datasource",
+  "id": "the-things-network-datasource",
   "metrics": true,
   "backend": true,
   "category": "iot",
   "executable": "gpx_mqtt",
   "info": {
-    "description": "MQTT Client Datasource Plugin",
+    "description": "The Things Network Datasource Plugin",
     "author": {
-      "name": "Grafana Labs",
-      "url": "https://grafana.com"
+      "name": "Lee Lup Yuen",
+      "url": "https://lupyuen.github.io"
     },
     "keywords": [
       "mqtt",
@@ -25,11 +25,11 @@
     "links": [
       {
         "name": "Website",
-        "url": "https://github.com/grafana/mqtt-datasource"
+        "url": "https://github.com/lupyuen/the-things-network-datasource"
       },
       {
         "name": "License",
-        "url": "https://github.com/grafana/mqtt-backend/blob/master/LICENSE"
+        "url": "https://github.com/lupyuen/the-things-network-datasource/blob/master/LICENSE"
       }
     ],
     "screenshots": [],
