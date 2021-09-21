@@ -1,12 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
   "type": "datasource",
-  "name": "MQTT",
+  "name": "The Things Network",
   "id": "the-things-network-datasource",
   "metrics": true,
   "backend": true,
   "category": "iot",
-  "executable": "gpx_mqtt",
+  "executable": "ttn_mqtt",
   "info": {
     "description": "The Things Network Datasource Plugin",
     "author": {
@@ -16,7 +16,8 @@
     "keywords": [
       "mqtt",
       "iot",
-      "streaming"
+      "streaming",
+      "thethingsnetwork"
     ],
     "logos": {
       "small": "img/mqtt.svg",

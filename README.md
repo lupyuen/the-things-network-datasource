@@ -1,12 +1,27 @@
-# The Things Network (MQTT) Datasource for Grafana
+# The Things Network (MQTT) Data Source for Grafana
 
 Read the article...
 
 -   ["The Things Network on PineDio Stack BL604 RISC-V Board"](https://lupyuen.github.io/articles/ttn)
 
-This Grafana Datasource connects to [__The Things Network__](https://www.thethingsnetwork.org/) over MQTT to stream the received sensor data.
+This Grafana Data Source connects to [__The Things Network__](https://www.thethingsnetwork.org/) over MQTT to stream the received sensor data...
+
+-   ["The Things Network: MQTT Server"](https://www.thethingsindustries.com/docs/integrations/mqtt/)
 
 We assume that Message Payloads are encoded in [__CBOR Format__](https://en.wikipedia.org/wiki/CBOR).
+
+To enable the Data Source, edit...
+
+```text
+C:\Program Files\GrafanaLabs\grafana\conf\defaults.ini
+```
+
+And set...
+
+```text
+[plugins]
+allow_loading_unsigned_plugins = the-things-network-datasource
+```
 
 Based on the MQTT data source for Grafana...
 
