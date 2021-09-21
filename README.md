@@ -1,19 +1,25 @@
-[![Build Status](https://drone.grafana.net/api/badges/grafana/mqtt-datasource/status.svg?ref=refs/heads/main)](https://drone.grafana.net/grafana/mqtt-datasource)
+# The Things Network (MQTT) Datasource for Grafana
 
-# MQTT data source for Grafana
+Read the article...
 
-The MQTT data source plugin allows you to visualize streaming MQTT data from within Grafana.
+-   ["The Things Network on PineDio Stack BL604 RISC-V Board"](https://lupyuen.github.io/articles/ttn)
 
-This datasource is under active development, all feedback and help is encouraged!
+This Grafana Datasource connects to [__The Things Network__](https://www.thethingsnetwork.org/) over MQTT to stream the received sensor data.
 
-## Requirements
+We assume that Message Payloads are encoded in [__CBOR Format__](https://en.wikipedia.org/wiki/CBOR).
+
+Based on the MQTT data source for Grafana...
+
+-   [github.com/grafana/mqtt-datasource](https://github.com/grafana/mqtt-datasource)
+
+## TODO: Requirements
 
 The MQTT data source has the following requirements:
 
 - Grafana user with a server or organization administration role; refer to [Permissions](https://grafana.com/docs/grafana/latest/permissions/).
 - Access to a MQTT broker.
 
-## Known limitations
+## TODO: Known limitations
 
 - The plugin currently does not support all of the MQTT CONNECT packet options.
 - The plugin currently does not support TLS.
@@ -29,13 +35,16 @@ The MQTT data source has the following requirements:
 ```
 We do plan to support more complex JSON data structures in the upcoming releases. Contributions are highly encouraged!
 - This plugin currently attaches timestamps to the messages when they are received, so there is no way to have custom timestamp for messages.
-## Install the plugin
 
-### Installation Pre-requisites
+## TODO: Install the plugin
+
+### TODO: Installation Pre-requisites
+
 Refer to: [Building a Streaming Datasource Backend Plugin](https://grafana.com/tutorials/build-a-streaming-data-source-plugin/)
 
 Details: [Ubuntu](https://github.com/grafana/mqtt-datasource/issues/15#issuecomment-894477802) [Windows](https://github.com/grafana/mqtt-datasource/issues/15#issuecomment-894534196)
-### Meet compatibility requirements
+
+### TODO: Meet compatibility requirements
 
 This plugin currently supports MQTT v3.1.x.
 
@@ -49,18 +58,18 @@ NOTE: The `yarn build` command above might fail on a non-unix-like system, like 
 
 3. Run `mage reloadPlugin` or restart Grafana for the plugin to load.
 
-### Verify that the plugin is installed
+### TODO: Verify that the plugin is installed
 
 1. In Grafana from the left-hand menu, navigate to **Configuration** > **Data sources**.
 2. From the top-right corner, click the **Add data source** button.
 3. Search for `MQTT` in the search field, and hover over the MQTT search result.
 4. Click the **Select** button for MQTT.
 
-## Configure the data source
+## TODO: Configure the data source
 
 [Add a data source](https://grafana.com/docs/grafana/latest/datasources/add-a-data-source/) by filling in the following fields:
 
-#### Basic fields
+#### TODO: Basic fields
 
 | Field | Description                                        |
 | ----- | -------------------------------------------------- |
@@ -68,14 +77,14 @@ NOTE: The `yarn build` command above might fail on a non-unix-like system, like 
 | Host  | The hostname or IP of the MQTT Broker              |
 | Port  | The port used by the MQTT Broker (default 1883)    |
 
-#### Authentication fields
+#### TODO: Authentication fields
 
 | Field    | Description                                                       |
 | -------- | ----------------------------------------------------------------- |
 | Username | (Optional) The username to use when connecting to the MQTT broker |
 | Password | (Optional) The password to use when connecting to the MQTT broker |
 
-## Query the data source
+## TODO: Query the data source
 
 The query editor allows you to specify which MQTT topics the panel will subscribe to. Refer to the [MQTT v3.1.1 specification](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718106)
 for more information about valid topic names and filters.
