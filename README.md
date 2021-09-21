@@ -62,6 +62,12 @@ Topic: #
 Topic: v3/luppy-application@ttn/devices/{device id}/up
 ```
 
+In case of problems, check the __Grafana Log__ at...
+
+```text
+C:\Program Files\GrafanaLabs\grafana\data\log\grafana.log
+```
+
 Based on the MQTT data source for Grafana...
 
 -   [github.com/grafana/mqtt-datasource](https://github.com/grafana/mqtt-datasource)
