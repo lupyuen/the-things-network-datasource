@@ -70,6 +70,8 @@ To test the MQTT Server...
 mosquitto_sub -h au1.cloud.thethings.network -t "#" -u "luppy-application@ttn" -P "YOUR_API_KEY" -d
 ```
 
+(See the MQTT Log below)
+
 In case of problems, check the __Grafana Log__ at...
 
 ```text
@@ -79,6 +81,132 @@ C:\Program Files\GrafanaLabs\grafana\data\log\grafana.log
 Based on the MQTT data source for Grafana...
 
 -   [github.com/grafana/mqtt-datasource](https://github.com/grafana/mqtt-datasource)
+
+## MQTT Log
+
+Monitor MQTT Server at The Things Network with `mosquitto_sub`...
+
+```text
+"c:\Program Files\Mosquitto\mosquitto_sub" -h au1.cloud.thethings.network -t "#" -u "luppy-application@ttn" -P "YOUR_API_KEY" -d
+
+Client (null) sending CONNECT
+Client (null) received CONNACK (0)
+Client (null) sending SUBSCRIBE (Mid: 1, Topic: #, QoS: 0, Options: 0x00)
+Client (null) received SUBACK
+Subscribed (mid: 1): 0
+Client (null) sending PINGREQ
+Client (null) received PINGRESP
+```
+
+Join Request...
+
+```text
+Client (null) received PUBLISH (d0, q0, r0, m0, 'v3/luppy-application@ttn/devices/eui-YOUR_DEVICE_EUI/join', ... (691 bytes))
+```
+
+```json
+{
+    "end_device_ids": {
+        "device_id": "eui-YOUR_DEVICE_EUI",
+        "application_ids": {
+            "application_id": "luppy-application"
+        },
+        "dev_eui": "YOUR_DEVICE_EUI",
+        "join_eui": "0000000000000000",
+        "dev_addr": "YOUR_DEVICE_ADDR"
+    },
+    "correlation_ids": [
+        "as:up:01FG3VK2PAVGQ6YCGSJXV8HNK6",
+        "gs:conn:01FG16A9P2FBKQXR7ESXHQPNDT",
+        "gs:up:host:01FG16ACECQ0XN03MFP434WW68",
+        "gs:uplink:01FG3VK0XH1FY4SRFY6AFMHJ1V",
+        "ns:uplink:01FG3VK0XKZNTX4ZG2DC4J8HYH",
+        "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01FG3VK0XKY6CET6ACA4F9MRBP",
+        "rpc:/ttn.lorawan.v3.NsAs/HandleUplink:01FG3VK2P8XJ254ER0YW5XNAQS"
+    ],
+    "received_at": "2021-09-21T09:39:32.683525105Z",
+    "join_accept": {
+        "session_key_id": "YOUR_SESSION_KEY",
+        "received_at": "2021-09-21T09:39:30.867270904Z"
+    }
+}
+```
+
+Send Data...
+
+```text
+Client (null) received PUBLISH (d0, q0, r0, m0, 'v3/luppy-application@ttn/devices/eui-YOUR_DEVICE_EUI/up', ... (1453 bytes))
+```
+
+```json
+{
+    "end_device_ids": {
+        "device_id": "eui-YOUR_DEVICE_EUI",
+        "application_ids": {
+            "application_id": "luppy-application"
+        },
+        "dev_eui": "YOUR_DEVICE_EUI",
+        "join_eui": "0000000000000000",
+        "dev_addr": "YOUR_DEVICE_ADDR"
+    },
+    "correlation_ids": [
+        "as:up:01FG3VM3J6N619KKZA5G6ZBQTG",
+        "gs:conn:01FG16A9P2FBKQXR7ESXHQPNDT",
+        "gs:up:host:01FG16ACECQ0XN03MFP434WW68",
+        "gs:uplink:01FG3VM3BS2J5WRNYJ1WDT7EMN",
+        "ns:uplink:01FG3VM3BVHF7K9RW64S5YB92K",
+        "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01FG3VM3BTJHWP66ZRPM464NAZ",
+        "rpc:/ttn.lorawan.v3.NsAs/HandleUplink:01FG3VM3J6QPFGF0354A0STABY"
+    ],
+    "received_at": "2021-09-21T09:40:06.343617863Z",
+    "uplink_message": {
+        "session_key_id": "YOUR_SESSION_KEY",
+        "f_port": 2,
+        "frm_payload": "AAAAAAA=",
+        "rx_metadata": [
+            {
+                "gateway_ids": {
+                    "gateway_id": "luppy-wisgate-rak7248",
+                    "eui": "YOUR_GATEWAY_EUI"
+                },
+                "time": "2021-09-21T10:33:46.302650Z",
+                "timestamp": 2520907181,
+                "rssi": -53,
+                "channel_rssi": -53,
+                "snr": 12.8,
+                "location": {
+                    "latitude": 1.27125,
+                    "longitude": 103.80795,
+                    "altitude": 70,
+                    "source": "SOURCE_REGISTRY"
+                },
+                "uplink_token": "...",
+                "channel_index": 2
+            }
+        ],
+        "settings": {
+            "data_rate": {
+                "lora": {
+                    "bandwidth": 125000,
+                    "spreading_factor": 10
+                }
+            },
+            "data_rate_index": 2,
+            "coding_rate": "4/5",
+            "frequency": "922200000",
+            "timestamp": 2520907181,
+            "time": "2021-09-21T10:33:46.302650Z"
+        },
+        "received_at": "2021-09-21T09:40:06.139046029Z",
+        "consumed_airtime": "0.329728s",
+        "network_ids": {
+            "net_id": "000013",
+            "tenant_id": "ttn",
+            "cluster_id": "ttn-au1"
+        }
+    }
+}
+```
 
 ## Build Log
 
