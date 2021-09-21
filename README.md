@@ -52,7 +52,7 @@ Public Address: au1.cloud.thethings.network:1883
 Username: luppy-application@ttn
 
 ## Change this to your API Key
-Password: <YOUR_API_KEY>
+Password: YOUR_API_KEY
 
 ## Subscribe to all topics
 Topic: #
@@ -60,6 +60,14 @@ Topic: #
 ## Subscribe to messages for a specific device
 ## Change luppy-application@ttn to your MQTT Username
 Topic: v3/luppy-application@ttn/devices/{device id}/up
+```
+
+To test the MQTT Server...
+
+```
+## Change au1.cloud.thethings.network to your MQTT Public Address
+## Change luppy-application@ttn to your MQTT Username
+mosquitto_sub -h au1.cloud.thethings.network -t "#" -u "luppy-application@ttn" -P "YOUR_API_KEY" -d
 ```
 
 In case of problems, check the __Grafana Log__ at...
