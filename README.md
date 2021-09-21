@@ -42,6 +42,25 @@ And set...
 allow_loading_unsigned_plugins = the-things-network-datasource
 ```
 
+__Configure the Data Source__ with these values from The Things Network -> Application -> (Your Application) -> Integrations -> MQTT...
+
+```text
+## Change this to your MQTT Public Address
+Public Address: au1.cloud.thethings.network:1883
+
+## Change this to your MQTT Username
+Username: luppy-application@ttn
+
+## Change this to your API Key
+Password: <YOUR_API_KEY>
+
+## For all topics
+Topic: #
+
+## For a specific device
+Topic: v3/{application id}@{tenant id}/devices/{device id}/up
+```
+
 Based on the MQTT data source for Grafana...
 
 -   [github.com/grafana/mqtt-datasource](https://github.com/grafana/mqtt-datasource)
