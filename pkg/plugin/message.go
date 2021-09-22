@@ -139,16 +139,16 @@ func decodeCborPayload(msg string) (map[string]interface{}, error) {
 	}
 
 	//  Get the Uplink Message
-	if doc["uplink_message"] == nil {
+	uplink_message, ok := doc["uplink_message"].(map[string]interface{})
+	if !ok {
 		return nil, errors.New("uplink_message missing")
 	}
-	uplink_message := doc["uplink_message"].(map[string]interface{})
 
 	//  Get the Payload
-	if uplink_message["frm_payload"] == nil {
+	frm_payload, ok := uplink_message["frm_payload"].(string)
+	if !ok {
 		return nil, errors.New("frm_payload missing")
 	}
-	frm_payload := uplink_message["frm_payload"].(string)
 
 	//  Base64 decode the Payload
 	payload, err := base64.StdEncoding.DecodeString(frm_payload)
@@ -171,10 +171,11 @@ func decodeCborPayload(msg string) (map[string]interface{}, error) {
 	}
 
 	//  Add the Device ID to the body: end_device_ids -> device_id
-	if doc["end_device_ids"] != nil {
-		end_device_ids := doc["end_device_ids"].(map[string]interface{})
-		if end_device_ids["device_id"] != nil {
-			body["device_id"] = end_device_ids["device_id"].(string)
+	end_device_ids, ok := doc["end_device_ids"].(map[string]interface{})
+	if ok {
+		device_id, ok := end_device_ids["device_id"].(string)
+		if ok {
+			body["device_id"] = device_id
 		}
 	}
 
