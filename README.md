@@ -19,7 +19,7 @@ This Grafana Data Source connects to [__The Things Network__](https://www.thethi
 We assume that Message Payloads are encoded in [__CBOR Format__](https://en.wikipedia.org/wiki/CBOR)...
 
 ```json
-{ "t": 1745 }
+{ "t": 1234 }
 ```
 
 This Data Source should be located in the __Grafana Plugins Folder__...
