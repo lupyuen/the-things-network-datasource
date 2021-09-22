@@ -22,6 +22,7 @@ export const QueryEditor = (props: Props) => {
             css=""
             autoComplete="off"
             onChange={handleEvent('queryText')}
+            defaultValue="all"
           />
         </Field>
       )}

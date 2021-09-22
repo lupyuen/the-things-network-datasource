@@ -89,6 +89,7 @@ func (c *Client) Stream() chan StreamMessage {
 func (c *Client) HandleMessage(_ paho.Client, msg paho.Message) {
 	log.DefaultLogger.Debug(fmt.Sprintf("Received MQTT Message for topic %s", msg.Topic()))
 	//  Accept all topics as "all"
+	//  TODO: Support other topics
 	//  Previously: topic, ok := c.topics.Load(msg.Topic())
 	topic, ok := c.topics.Load("all")
 	if !ok {
@@ -111,6 +112,7 @@ func (c *Client) HandleMessage(_ paho.Client, msg paho.Message) {
 	c.topics.Store(topic)
 
 	//  Stream message to topic "all"
+	//  TODO: Support other topics
 	//  Previously: streamMessage := StreamMessage{Topic: msg.Topic(), Value: string(msg.Payload())}
 	streamMessage := StreamMessage{Topic: "all", Value: string(msg.Payload())}
 
