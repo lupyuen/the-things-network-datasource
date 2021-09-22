@@ -7,11 +7,14 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/grafana/grafana-plugin-sdk-go/backend/log"
 	"github.com/grafana/grafana-plugin-sdk-go/data"
 	"github.com/grafana/mqtt-datasource/pkg/mqtt"
 )
 
 func ToFrame(topic string, messages []mqtt.Message) *data.Frame {
+	log.DefaultLogger.Debug(fmt.Sprintf("ToFrame: topic=%s", topic))
+
 	count := len(messages)
 	if count > 0 {
 		first := messages[0].Value
@@ -37,14 +40,19 @@ func ToFrame(topic string, messages []mqtt.Message) *data.Frame {
 }
 
 func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
+	log.DefaultLogger.Debug(fmt.Sprintf("jsonMessagesToFrame: topic=%s", topic))
+
 	count := len(messages)
 	if count == 0 {
+		log.DefaultLogger.Debug(fmt.Sprintf("jsonMessagesToFrame: No msgs for topic=%s", topic))
 		return nil
 	}
 
+	//  Deserialise the message body to a map of String -> Float
 	var body map[string]float64
 	err := json.Unmarshal([]byte(messages[0].Value), &body)
 	if err != nil {
+		log.DefaultLogger.Debug(fmt.Sprintf("error unmarshalling json message: %s", err.Error()))
 		frame := data.NewFrame(topic)
 		frame.AppendNotices(data.Notice{Severity: data.NoticeSeverityError,
 			Text: fmt.Sprintf("error unmarshalling json message: %s", err.Error()),
@@ -92,5 +100,6 @@ func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
 	for _, key := range keys {
 		frame.Fields = append(frame.Fields, fields[key])
 	}
+	log.DefaultLogger.Debug(fmt.Sprintf("jsonMessagesToFrame: New Frame for topic=%s", topic))
 	return frame
 }

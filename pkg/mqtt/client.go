@@ -110,7 +110,12 @@ func (c *Client) HandleMessage(_ paho.Client, msg paho.Message) {
 
 	c.topics.Store(topic)
 
-	streamMessage := StreamMessage{Topic: msg.Topic(), Value: string(msg.Payload())}
+	//  Stream message to topic "all"
+	//  Previously: streamMessage := StreamMessage{Topic: msg.Topic(), Value: string(msg.Payload())}
+	streamMessage := StreamMessage{Topic: "all", Value: string(msg.Payload())}
+
+	log.DefaultLogger.Debug(fmt.Sprintf("Stream MQTT Message for topic %s", "all"))
+
 	select {
 	case c.stream <- streamMessage:
 	default:
