@@ -96,14 +96,28 @@ This Data Source is based on the MQTT data source for Grafana...
 ```text
 C:\Program Files\GrafanaLabs\grafana\data\log\grafana.log
 
-t=2021-09-21T18:04:52+0800 lvl=info msg="MQTT Connecting" logger=plugins.backend pluginId=the-things-network-datasource
-t=2021-09-21T18:04:53+0800 lvl=dbug msg="Subscribing to MQTT topic: #" logger=plugins.backend pluginId=the-things-network-datasource
-t=2021-09-21T18:04:53+0800 lvl=dbug msg="Client wants to subscribe" logger=live user=1 client=27dba4ff-ccf7-4920-98d4-13cb5cdc377c channel=1/ds/N44EKVN7z/#
-t=2021-09-21T18:04:53+0800 lvl=info msg="Invalid channel ID" logger=live user=1 client=27dba4ff-ccf7-4920-98d4-13cb5cdc377c channel=1/ds/N44EKVN7z/#
-t=2021-09-21T18:05:00+0800 lvl=dbug msg="Scheduling update" logger=alerting.scheduler ruleCount=0
-t=2021-09-21T18:05:02+0800 lvl=dbug msg="Received unknown frontend metric" logger=context userId=1 orgId=1 uname=admin metric=frontend_boot_first_contentful_paint_time_seconds
-t=2021-09-21T18:05:10+0800 lvl=dbug msg="Scheduling update" logger=alerting.scheduler ruleCount=0
-t=2021-09-21T18:05:14+0800 lvl=dbug msg="Received MQTT Message for topic v3/luppy-application@ttn/devices/eui-YOUR_DEVICE_EUI/up" logger=plugins.backend pluginId=the-things-network-datasource
+MQTT Connecting
+Subscribing to MQTT topic: #
+ToFrame: topic=all
+Client wants to subscribe" logger=live user=1 client=74b41d8a-ed18-470d-a529-14ab74fd40da channel=1/ds/N44EKVN7z/all
+Initialized channel handler" logger=live channel=ds/N44EKVN7z/all address=ds/N44EKVN7z/all
+Running a new unidirectional stream" logger=live.features path=all
+Client subscribed" logger=live user=1 client=74b41d8a-ed18-470d-a529-14ab74fd40da channel=1/ds/N44EKVN7z/all
+Received unknown frontend metric" logger=context userId=1 orgId=1 uname=admin metric=frontend_boot_first_contentful_paint_time_seconds
+Received MQTT Message for topic v3/luppy-application@ttn/devices/eui-YOUR_DEVICE_EUI/join
+Stream MQTT Message for topic all
+ToFrame: topic=all
+jsonMessagesToFrame: topic=all
+uplink_message missing
+Sending message to client for topic all
+Querying for data source via SQL store" logger=datasources uid=N44EKVN7z orgId=1
+Received MQTT Message for topic v3/luppy-application@ttn/devices/eui-YOUR_DEVICE_EUI/up
+Stream MQTT Message for topic all
+ToFrame: topic=all
+jsonMessagesToFrame: topic=all
+payload: [0 0 0 0 0]
+jsonMessagesToFrame: New Frame for topic=all
+Sending message to client for topic all
 ```
 
 ## MQTT Log
