@@ -4,6 +4,10 @@ Read the article...
 
 -   ["The Things Network on PineDio Stack BL604 RISC-V Board"](https://lupyuen.github.io/articles/ttn)
 
+See this Twitter Thread for updates...
+
+https://twitter.com/MisterTechBlog/status/1440459917828050946
+
 This Grafana Data Source connects to [__The Things Network__](https://www.thethingsnetwork.org/) over MQTT to stream the received sensor data...
 
 -   ["The Things Network: MQTT Server"](https://www.thethingsindustries.com/docs/integrations/mqtt/)
