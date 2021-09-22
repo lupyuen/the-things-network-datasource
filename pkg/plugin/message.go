@@ -65,22 +65,22 @@ func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
 		}
 
 		//  Get the Uplink Message
-		uplink_message := body["uplink_message"].(map[string]interface{})
-		if uplink_message == nil {
+		if body["uplink_message"] == nil {
 			s := "uplink_message missing"
 			frame.AppendNotices(data.Notice{Severity: data.NoticeSeverityError, Text: s})
 			log.DefaultLogger.Debug(s)
 			return frame
 		}
+		uplink_message := body["uplink_message"].(map[string]interface{})
 
 		//  Get the Payload
-		frm_payload := uplink_message["frm_payload"].(string)
-		if frm_payload == "" {
+		if uplink_message["frm_payload"] == nil {
 			s := "frm_payload missing"
 			frame.AppendNotices(data.Notice{Severity: data.NoticeSeverityError, Text: s})
 			log.DefaultLogger.Debug(s)
 			return frame
 		}
+		frm_payload := uplink_message["frm_payload"].(string)
 
 		//  Base64 decode the Payload
 		payload, err := base64.StdEncoding.DecodeString(frm_payload)
@@ -90,7 +90,7 @@ func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
 			log.DefaultLogger.Debug(s)
 			return frame
 		}
-		println(fmt.Sprintf("payload: %v", payload))
+		log.DefaultLogger.Debug(fmt.Sprintf("payload: %v", payload))
 
 		//  TODO: Decode the payload with CBOR
 		//  TODO: Add the decoded fields to the frame
