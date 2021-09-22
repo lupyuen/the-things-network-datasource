@@ -1,7 +1,6 @@
 package plugin
 
 import (
-	"encoding/json"
 	"fmt"
 	"sort"
 	"strconv"
@@ -90,10 +89,18 @@ func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
 			continue
 		}
 
-		err := json.Unmarshal([]byte(m.Value), &body)
-		if err != nil {
-			continue // bad row?
-		}
+		/*
+			//  Deserialise the message body to a map of String -> Float
+			err := json.Unmarshal([]byte(m.Value), &body)
+			if err != nil {
+				log.DefaultLogger.Debug(fmt.Sprintf("error unmarshalling json message: %s", err.Error()))
+				continue // bad row?
+			}
+		*/
+
+		//  Sample body
+		body = map[string]float64{}
+		body["t"] = 123.0
 
 		timeField.SetConcrete(row, m.Timestamp)
 		for key, val := range body {
