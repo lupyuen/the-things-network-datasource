@@ -57,30 +57,27 @@ func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
 	msg := messages[0]
 	log.DefaultLogger.Debug(fmt.Sprintf("jsonMessagesToFrame: topic=%s, msg=%s", topic, msg.Value))
 
-	//  Constuct the Timestamp field
+	//  Decode the CBOR payload
+	body, err := decodeCborPayload(msg.Value)
+	if err != nil {
+		return set_error(data.NewFrame(topic), err)
+	}
+
+	//  Construct the Timestamp field
 	timeField := data.NewFieldFromFieldType(data.FieldTypeTime, count)
 	timeField.Name = "Time"
 	timeField.SetConcrete(0, msg.Timestamp)
 
-	//  Construct the Data Frame
-	frame := data.NewFrame(topic, timeField)
-
-	//  Decode the CBOR payload
-	body, err := decodeCborPayload(msg.Value)
-	if err != nil {
-		return set_error(frame, err)
-	}
-
-	// Create a field for each key and set the first value
+	//  Create a field for each key and set the first value
 	keys := make([]string, 0, len(body))
 	fields := make(map[string]*data.Field, len(body))
 
-	//  Compose the fields for the Data Frame
+	//  Compose the fields for the first row of the Data Frame
 	for key, val := range body {
 		//  Get the Data Frame Type for the field
 		typ := get_type(val)
 
-		//  Create the field
+		//  Create the field for the first row
 		field := data.NewFieldFromFieldType(typ, count)
 		field.Name = key
 		field.SetConcrete(0, val)
@@ -89,14 +86,34 @@ func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
 	}
 	sort.Strings(keys) // keys stable field order.
 
-	//  TODO: Transform the messages after the first one
-	//  We might not need this because The Things Network only supports low-volume messaging
+	//  Transform the messages after the first one
 	for row, m := range messages {
+		//  Skip the first message
 		if row == 0 {
 			continue
 		}
-		log.DefaultLogger.Debug(fmt.Sprintf("jsonMessagesToFrame: Dropped msg=%s", topic, m.Value))
+
+		//  Decode the CBOR payload
+		body, err := decodeCborPayload(m.Value)
+		if err != nil {
+			log.DefaultLogger.Debug(fmt.Sprintf("jsonMessagesToFrame: Decode error %s", err.Error()))
+			continue
+		}
+
+		//  Set the Timestamp for the transformed row
+		timeField.SetConcrete(row, m.Timestamp)
+
+		//  Set the fields for the transformed row
+		for key, val := range body {
+			field, ok := fields[key]
+			if ok {
+				field.SetConcrete(row, val)
+			}
+		}
 	}
+
+	//  Construct the Data Frame
+	frame := data.NewFrame(topic, timeField)
 
 	//  Append the fields to the Data Frame
 	for _, key := range keys {
@@ -143,6 +160,7 @@ func decodeCborPayload(msg string) (map[string]interface{}, error) {
 	//  TODO: Testing CBOR encoding for {"t": 1234}.  See http://cbor.me/
 	if payload[0] == 0 {
 		payload = []byte{0xA1, 0x61, 0x74, 0x19, 0x04, 0xD2}
+		log.DefaultLogger.Debug(fmt.Sprintf("TODO: Testing payload: %v", payload))
 	}
 
 	//  Decode CBOR payload to a map of String -> interface{}
@@ -161,9 +179,9 @@ func decodeCborPayload(msg string) (map[string]interface{}, error) {
 	}
 
 	//  TODO: Test various field types
-	body["f64"] = float64(1234)
-	body["u64"] = uint64(1234)
-	body["str"] = "Test"
+	//  body["f64"] = float64(1234)
+	//  body["u64"] = uint64(1234)
+	//  body["str"] = "Test"
 
 	//  Shows: map[device_id:eui-70b3d57ed0045669 t:1234]
 	log.DefaultLogger.Debug(fmt.Sprintf("CBOR decoded: %v", body))

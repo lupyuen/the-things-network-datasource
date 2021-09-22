@@ -103,26 +103,28 @@ C:\Program Files\GrafanaLabs\grafana\data\log\grafana.log
 MQTT Connecting
 Subscribing to MQTT topic: #
 ToFrame: topic=all
-Client wants to subscribe" logger=live user=1 client=74b41d8a-ed18-470d-a529-14ab74fd40da channel=1/ds/N44EKVN7z/all
+Client wants to subscribe" logger=live user=1 client=bf6bd5dd-1dea-43a8-9c8c-cfcc50562801 channel=1/ds/N44EKVN7z/all
 Initialized channel handler" logger=live channel=ds/N44EKVN7z/all address=ds/N44EKVN7z/all
 Running a new unidirectional stream" logger=live.features path=all
-Client subscribed" logger=live user=1 client=74b41d8a-ed18-470d-a529-14ab74fd40da channel=1/ds/N44EKVN7z/all
+Client subscribed" logger=live user=1 client=bf6bd5dd-1dea-43a8-9c8c-cfcc50562801 channel=1/ds/N44EKVN7z/all
 Received unknown frontend metric" logger=context userId=1 orgId=1 uname=admin metric=frontend_boot_first_contentful_paint_time_seconds
 
 Received MQTT Message for topic v3/luppy-application@ttn/devices/eui-YOUR_DEVICE_EUI/join
 Stream MQTT Message for topic all
 ToFrame: topic=all
-jsonMessagesToFrame: topic=all
 uplink_message missing
 Sending message to client for topic all
-Querying for data source via SQL store" logger=datasources uid=N44EKVN7z orgId=1
 
 Received MQTT Message for topic v3/luppy-application@ttn/devices/eui-YOUR_DEVICE_EUI/up
 Stream MQTT Message for topic all
 ToFrame: topic=all
-jsonMessagesToFrame: topic=all
 payload: [0 0 0 0 0]
-jsonMessagesToFrame: New Frame for topic=all
+TODO: Testing payload: [161 97 116 25 4 210]
+CBOR decoded: map[device_id:eui-YOUR_DEVICE_EUI t:1234]
+jsonMessagesToFrame: Frame=&{Name:all Fields:[...] RefID: Meta:<nil>}
+  field=&{Name:Time Labels: Config:<nil> vector:0xc000004700}
+  field=&{Name:device_id Labels: Config:<nil> vector:0xc000004940}
+  field=&{Name:t Labels: Config:<nil> vector:0xc000004920}
 Sending message to client for topic all
 ```
 
