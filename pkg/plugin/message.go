@@ -47,18 +47,26 @@ func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
 		log.DefaultLogger.Debug(fmt.Sprintf("jsonMessagesToFrame: No msgs for topic=%s", topic))
 		return nil
 	}
+	log.DefaultLogger.Debug(fmt.Sprintf("jsonMessagesToFrame: msg=%s", messages[0].Value))
 
-	//  Deserialise the message body to a map of String -> Float
 	var body map[string]float64
-	err := json.Unmarshal([]byte(messages[0].Value), &body)
-	if err != nil {
-		log.DefaultLogger.Debug(fmt.Sprintf("error unmarshalling json message: %s", err.Error()))
-		frame := data.NewFrame(topic)
-		frame.AppendNotices(data.Notice{Severity: data.NoticeSeverityError,
-			Text: fmt.Sprintf("error unmarshalling json message: %s", err.Error()),
-		})
-		return frame
-	}
+
+	/*
+		//  Deserialise the message body to a map of String -> Float
+		err := json.Unmarshal([]byte(messages[0].Value), &body)
+		if err != nil {
+			log.DefaultLogger.Debug(fmt.Sprintf("error unmarshalling json message: %s", err.Error()))
+			frame := data.NewFrame(topic)
+			frame.AppendNotices(data.Notice{Severity: data.NoticeSeverityError,
+				Text: fmt.Sprintf("error unmarshalling json message: %s", err.Error()),
+			})
+			return frame
+		}
+	*/
+
+	//  Sample body
+	body = map[string]float64{}
+	body["t"] = 123.0
 
 	timeField := data.NewFieldFromFieldType(data.FieldTypeTime, count)
 	timeField.Name = "Time"
