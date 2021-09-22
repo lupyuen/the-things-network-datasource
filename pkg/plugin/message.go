@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/fxamacker/cbor/v2"
 	"github.com/grafana/grafana-plugin-sdk-go/backend/log"
 	"github.com/grafana/grafana-plugin-sdk-go/data"
 	"github.com/grafana/mqtt-datasource/pkg/mqtt"
@@ -40,7 +41,7 @@ func ToFrame(topic string, messages []mqtt.Message) *data.Frame {
 	return data.NewFrame(topic, timeField, valueField)
 }
 
-//  Transform the array of MQTT Messages into a Grafana Data Frame
+//  Transform the array of MQTT Messages (JSON encoded) into a Grafana Data Frame
 func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
 	log.DefaultLogger.Debug(fmt.Sprintf("jsonMessagesToFrame: topic=%s", topic))
 
@@ -94,6 +95,24 @@ func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
 
 		//  TODO: Decode the payload with CBOR
 		//  TODO: Add the decoded fields to the frame
+	}
+
+	{
+		//  CBOR encoding for {"t": 1234}.  See http://cbor.me/
+		payload := []byte{0xA1, 0x61, 0x74, 0x19, 0x04, 0xD2}
+		frame := data.NewFrame(topic)
+
+		//  Decode CBOR payload to a map of String -> interface{}
+		var body map[string]interface{}
+		err := cbor.Unmarshal(payload, &body)
+		if err != nil {
+			s := fmt.Sprintf("CBOR decode failed: %s", err.Error())
+			frame.AppendNotices(data.Notice{Severity: data.NoticeSeverityError, Text: s})
+			log.DefaultLogger.Debug(s)
+			return frame
+		}
+		//  Shows: map[t:1234]
+		log.DefaultLogger.Debug(fmt.Sprintf("CBOR decoded: %v", body))
 	}
 
 	//  Sample body

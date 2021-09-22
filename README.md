@@ -23,6 +23,7 @@ C:\Program Files\GrafanaLabs\grafana\data\plugins\the-things-network-datasource
 To __build the Data Source__...
 
 ```bash
+go get github.com/fxamacker/cbor/v2
 yarn install
 yarn build
 ```
