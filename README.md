@@ -352,7 +352,7 @@ NOTE: The `yarn build` command above might fail on a non-unix-like system, like 
 
 [Add the Data Source](https://grafana.com/docs/grafana/latest/datasources/add-a-data-source/) for "The Things Network"
 
-Configure the Data Source with these values from `The Things Network → Application → (Your Application) → Integrations → MQTT`...
+Configure the Data Source with the values from `The Things Network → Application → (Your Application) → Integrations → MQTT`...
 
 #### Basic fields
 
