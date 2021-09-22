@@ -358,7 +358,7 @@ Configure the Data Source with these values from `The Things Network → Applica
 
 | Field | Description                                        |
 | ----- | -------------------------------------------------- |
-| Name  | A name for this particular data source |
+| Name  | Name for this data source |
 | Host  | Public Address of your MQTT Server at The Things Network |
 | Port  | MQTT Port (default 1883) |
 
