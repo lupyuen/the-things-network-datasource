@@ -1,5 +1,7 @@
 # The Things Network (MQTT) Data Source for Grafana
 
+![Grafana Data Source for The Things Network](https://lupyuen.github.io/images/grafana-datasource.png)
+
 Read the article...
 
 -   ["The Things Network on PineDio Stack BL604 RISC-V Board"](https://lupyuen.github.io/articles/ttn)
@@ -11,6 +13,8 @@ https://twitter.com/MisterTechBlog/status/1440459917828050946
 This Grafana Data Source connects to [__The Things Network__](https://www.thethingsnetwork.org/) over MQTT to stream the received sensor data...
 
 -   ["The Things Network: MQTT Server"](https://www.thethingsindustries.com/docs/integrations/mqtt/)
+
+![Grafana Dashboard for The Things Network](https://lupyuen.github.io/images/grafana-dashboard.png)
 
 We assume that Message Payloads are encoded in [__CBOR Format__](https://en.wikipedia.org/wiki/CBOR)...
 
@@ -66,11 +70,7 @@ Username: luppy-application@ttn
 Password: YOUR_API_KEY
 
 ## Subscribe to all topics
-Topic: #
-
-## Subscribe to messages for a specific device
-## Change luppy-application@ttn to your MQTT Username
-Topic: v3/luppy-application@ttn/devices/{device id}/up
+Topic: all
 ```
 
 To __test the MQTT Server__...
