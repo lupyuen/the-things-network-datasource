@@ -366,3 +366,5 @@ NOTE: The `yarn build` command above might fail on a non-unix-like system, like 
 | -------- | ----------------------------------------------------------------- |
 | Username | (Optional) The username to use when connecting to the MQTT broker |
 | Password | (Optional) The password to use when connecting to the MQTT broker |
+
+![Configuring the Grafana Data Source for The Things Network](https://lupyuen.github.io/images/grafana-config.png)
