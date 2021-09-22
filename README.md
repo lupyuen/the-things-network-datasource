@@ -350,21 +350,21 @@ NOTE: The `yarn build` command above might fail on a non-unix-like system, like 
 
 ## Configure the data source
 
-[Add a data source](https://grafana.com/docs/grafana/latest/datasources/add-a-data-source/) by filling in the following fields:
+Configure the Data Source with these values from `The Things Network → Application → (Your Application) → Integrations → MQTT`...
 
 #### Basic fields
 
 | Field | Description                                        |
 | ----- | -------------------------------------------------- |
 | Name  | A name for this particular data source |
-| Host  | The hostname or IP of the MQTT Broker              |
-| Port  | The port used by the MQTT Broker (default 1883)    |
+| Host  | Public Address of your MQTT Server at The Things Network |
+| Port  | MQTT Port (default 1883) |
 
 #### Authentication fields
 
 | Field    | Description                                                       |
 | -------- | ----------------------------------------------------------------- |
-| Username | (Optional) The username to use when connecting to the MQTT broker |
-| Password | (Optional) The password to use when connecting to the MQTT broker |
+| Username | Username for your MQTT Server at The Things Network |
+| Password | API Key for your MQTT Server at The Things Network |
 
 ![Configuring the Grafana Data Source for The Things Network](https://lupyuen.github.io/images/grafana-config.png)
