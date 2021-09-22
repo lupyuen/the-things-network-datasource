@@ -1,6 +1,8 @@
 package plugin
 
 import (
+	"encoding/base64"
+	"encoding/json"
 	"fmt"
 	"sort"
 	"strconv"
@@ -38,6 +40,7 @@ func ToFrame(topic string, messages []mqtt.Message) *data.Frame {
 	return data.NewFrame(topic, timeField, valueField)
 }
 
+//  Transform the array of MQTT Messages into a Grafana Data Frame
 func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
 	log.DefaultLogger.Debug(fmt.Sprintf("jsonMessagesToFrame: topic=%s", topic))
 
@@ -48,23 +51,53 @@ func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
 	}
 	log.DefaultLogger.Debug(fmt.Sprintf("jsonMessagesToFrame: msg=%s", messages[0].Value))
 
-	var body map[string]float64
-
-	/*
-		//  Deserialise the message body to a map of String -> Float
+	{
+		//  Handle the first message. See sample messages: https://github.com/lupyuen/the-things-network-datasource#mqtt-log
+		//  Deserialise the message body to a map of String -> interface{}
+		frame := data.NewFrame(topic)
+		var body map[string]interface{}
 		err := json.Unmarshal([]byte(messages[0].Value), &body)
 		if err != nil {
-			log.DefaultLogger.Debug(fmt.Sprintf("error unmarshalling json message: %s", err.Error()))
-			frame := data.NewFrame(topic)
-			frame.AppendNotices(data.Notice{Severity: data.NoticeSeverityError,
-				Text: fmt.Sprintf("error unmarshalling json message: %s", err.Error()),
-			})
+			s := fmt.Sprintf("error unmarshalling json message: %s", err.Error())
+			frame.AppendNotices(data.Notice{Severity: data.NoticeSeverityError, Text: s})
+			log.DefaultLogger.Debug(s)
 			return frame
 		}
-	*/
+
+		//  Get the Uplink Message
+		uplink_message := body["uplink_message"].(map[string]interface{})
+		if uplink_message == nil {
+			s := "uplink_message missing"
+			frame.AppendNotices(data.Notice{Severity: data.NoticeSeverityError, Text: s})
+			log.DefaultLogger.Debug(s)
+			return frame
+		}
+
+		//  Get the Payload
+		frm_payload := uplink_message["frm_payload"].(string)
+		if frm_payload == "" {
+			s := "frm_payload missing"
+			frame.AppendNotices(data.Notice{Severity: data.NoticeSeverityError, Text: s})
+			log.DefaultLogger.Debug(s)
+			return frame
+		}
+
+		//  Base64 decode the Payload
+		payload, err := base64.StdEncoding.DecodeString(frm_payload)
+		if err != nil {
+			s := fmt.Sprintf("Base64 decode failed: %s", err.Error())
+			frame.AppendNotices(data.Notice{Severity: data.NoticeSeverityError, Text: s})
+			log.DefaultLogger.Debug(s)
+			return frame
+		}
+		println(fmt.Sprintf("payload: %v", payload))
+
+		//  TODO: Decode the payload with CBOR
+		//  TODO: Add the decoded fields to the frame
+	}
 
 	//  Sample body
-	body = map[string]float64{}
+	body := map[string]float64{}
 	body["t"] = 123.0
 
 	timeField := data.NewFieldFromFieldType(data.FieldTypeTime, count)
@@ -83,7 +116,8 @@ func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
 	}
 	sort.Strings(keys) // keys stable field order.
 
-	// Add rows 1...n
+	//  TODO: Handle the messages after the first one
+	//  We might not need this because The Things Network only supports low-volume messaging
 	for row, m := range messages {
 		if row == 0 {
 			continue
@@ -98,9 +132,9 @@ func jsonMessagesToFrame(topic string, messages []mqtt.Message) *data.Frame {
 			}
 		*/
 
-		//  Sample body
+		//  TODO: Sample body to indicate that message was dropped
 		body = map[string]float64{}
-		body["t"] = 123.0
+		body["dropped"] = 1.0
 
 		timeField.SetConcrete(row, m.Timestamp)
 		for key, val := range body {
