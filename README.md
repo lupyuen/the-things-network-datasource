@@ -345,10 +345,12 @@ NOTE: The `yarn build` command above might fail on a non-unix-like system, like 
 
 1. In Grafana from the left-hand menu, navigate to **Configuration** > **Data sources**.
 2. From the top-right corner, click the **Add data source** button.
-3. Search for `The Things Network` in the search field, and hover over `The Things Network` search result.
-4. Click the **Select** button for `The Things Network`.
+3. Search for "The Things Network" in the search field, and hover over "The Things Network" search result.
+4. Click the **Select** button for "The Things Network".
 
 ## Configure the data source
+
+[Add the Data Source](https://grafana.com/docs/grafana/latest/datasources/add-a-data-source/) for "The Things Network"
 
 Configure the Data Source with these values from `The Things Network → Application → (Your Application) → Integrations → MQTT`...
 
