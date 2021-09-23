@@ -2,7 +2,9 @@
 
 ![Grafana Data Source for The Things Network](https://lupyuen.github.io/images/grafana-flow.jpg)
 
-Read the article...
+Read the articles...
+
+-   ["Grafana Data Source for The Things Network"](https://lupyuen.github.io/articles/grafana)
 
 -   ["The Things Network on PineDio Stack BL604 RISC-V Board"](https://lupyuen.github.io/articles/ttn)
 
