@@ -81,7 +81,7 @@ Topic: all
 
 To __test the MQTT Server__...
 
-```
+```bash
 ## Change au1.cloud.thethings.network to your MQTT Public Address
 ## Change luppy-application@ttn to your MQTT Username
 mosquitto_sub -h au1.cloud.thethings.network -t "#" -u "luppy-application@ttn" -P "YOUR_API_KEY" -d

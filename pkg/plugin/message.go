@@ -157,11 +157,11 @@ func decodeCborPayload(msg string) (map[string]interface{}, error) {
 	}
 	log.DefaultLogger.Debug(fmt.Sprintf("payload: %v", payload))
 
-	//  TODO: Testing CBOR encoding for {"t": 1234}.  See http://cbor.me/
-	if payload[0] == 0 {
-		payload = []byte{0xA1, 0x61, 0x74, 0x19, 0x04, 0xD2}
-		log.DefaultLogger.Debug(fmt.Sprintf("TODO: Testing payload: %v", payload))
-	}
+	//  TODO: Testing CBOR Decoding for {"t": 1234}.  See http://cbor.me/
+	//  if payload[0] == 0 {
+	//  	payload = []byte{0xA1, 0x61, 0x74, 0x19, 0x04, 0xD2}
+	//  	log.DefaultLogger.Debug(fmt.Sprintf("TODO: Testing payload: %v", payload))
+	//  }
 
 	//  Decode CBOR payload to a map of String -> interface{}
 	var body map[string]interface{}
