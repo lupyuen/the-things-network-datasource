@@ -14,7 +14,7 @@ export const QueryEditor = (props: Props) => {
   return (
     <Form onSubmit={() => {}}>
       {() => (
-        <Field label="Topic">
+        <Field label="Topic (only 'all' is supported)">
           <Input
             name="queryText"
             required
@@ -22,7 +22,6 @@ export const QueryEditor = (props: Props) => {
             css=""
             autoComplete="off"
             onChange={handleEvent('queryText')}
-            defaultValue="all"
           />
         </Field>
       )}

@@ -27,6 +27,12 @@ type Client struct {
 	stream chan StreamMessage
 }
 
+//  Name of our default topic. TODO: Support other topics
+const defaultTopicName = "all"
+
+//  We will subscribe to all MQTT topics. TODO: Support other topics
+const defaultTopicMQTT = "#"
+
 func NewClient(o Options) (*Client, error) {
 	opts := paho.NewClientOptions()
 
@@ -88,12 +94,11 @@ func (c *Client) Stream() chan StreamMessage {
 
 func (c *Client) HandleMessage(_ paho.Client, msg paho.Message) {
 	log.DefaultLogger.Debug(fmt.Sprintf("Received MQTT Message for topic %s", msg.Topic()))
-	//  Accept all topics as "all"
-	//  TODO: Support other topics
+	//  Accept all topics as "all". TODO: Support other topics.
 	//  Previously: topic, ok := c.topics.Load(msg.Topic())
-	topic, ok := c.topics.Load("all")
+	topic, ok := c.topics.Load(defaultTopicName)
 	if !ok {
-		log.DefaultLogger.Debug(fmt.Sprintf("Topic not found: %s", "all"))
+		log.DefaultLogger.Debug(fmt.Sprintf("Topic not found: %s", defaultTopicName))
 		return
 	}
 
@@ -111,12 +116,11 @@ func (c *Client) HandleMessage(_ paho.Client, msg paho.Message) {
 
 	c.topics.Store(topic)
 
-	//  Stream message to topic "all"
-	//  TODO: Support other topics
+	//  Stream message to topic "all". TODO: Support other topics.
 	//  Previously: streamMessage := StreamMessage{Topic: msg.Topic(), Value: string(msg.Payload())}
-	streamMessage := StreamMessage{Topic: "all", Value: string(msg.Payload())}
+	streamMessage := StreamMessage{Topic: defaultTopicName, Value: string(msg.Payload())}
 
-	log.DefaultLogger.Debug(fmt.Sprintf("Stream MQTT Message for topic %s", "all"))
+	log.DefaultLogger.Debug(fmt.Sprintf("Stream MQTT Message for topic %s", defaultTopicName))
 
 	select {
 	case c.stream <- streamMessage:
@@ -129,17 +133,17 @@ func (c *Client) Subscribe(t string) {
 	if _, ok := c.topics.Load(t); ok {
 		return
 	}
-	//  Subscribe to all topics: "#"
+	//  Subscribe to all topics: "#". TODO: Support other topics.
 	//  Previously: log.DefaultLogger.Debug(fmt.Sprintf("Subscribing to MQTT topic: %s", t))
-	log.DefaultLogger.Debug(fmt.Sprintf("Subscribing to MQTT topic: %s", "#"))
+	log.DefaultLogger.Debug(fmt.Sprintf("Subscribing to MQTT topic: %s", defaultTopicMQTT))
 	topic := Topic{
 		path: t,
 	}
 	c.topics.Store(&topic)
 
-	//  Subscribe to all topics: "#"
+	//  Subscribe to all topics: "#". TODO: Support other topics.
 	//  Previously: c.client.Subscribe(t, 0, c.HandleMessage)
-	c.client.Subscribe("#", 0, c.HandleMessage)
+	c.client.Subscribe(defaultTopicMQTT, 0, c.HandleMessage)
 }
 
 func (c *Client) Unsubscribe(t string) {
