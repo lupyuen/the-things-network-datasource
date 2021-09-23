@@ -1,6 +1,6 @@
 # The Things Network (MQTT) Data Source for Grafana
 
-![Grafana Data Source for The Things Network](https://lupyuen.github.io/images/grafana-datasource.png)
+![Grafana Data Source for The Things Network](https://lupyuen.github.io/images/grafana-flow.jpg)
 
 Read the article...
 
@@ -13,6 +13,8 @@ https://twitter.com/MisterTechBlog/status/1440459917828050946
 This Grafana Data Source connects to [__The Things Network__](https://www.thethingsnetwork.org/) over MQTT to stream the received sensor data...
 
 -   ["The Things Network: MQTT Server"](https://www.thethingsindustries.com/docs/integrations/mqtt/)
+
+![Grafana Data Source for The Things Network](https://lupyuen.github.io/images/grafana-datasource.png)
 
 ![Grafana Dashboard for The Things Network](https://lupyuen.github.io/images/grafana-dashboard.png)
 
@@ -347,6 +349,8 @@ NOTE: The `yarn build` command above might fail on a non-unix-like system, like 
 2. From the top-right corner, click the **Add data source** button.
 3. Search for "The Things Network" in the search field, and hover over "The Things Network" search result.
 4. Click the **Select** button for "The Things Network".
+
+![Grafana Data Source for The Things Network](https://lupyuen.github.io/images/grafana-datasource2.png)
 
 ## Configure the data source
 
