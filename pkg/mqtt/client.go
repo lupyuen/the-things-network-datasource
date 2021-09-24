@@ -3,6 +3,7 @@ package mqtt
 import (
 	"fmt"
 	"math/rand"
+	"strings"
 	"time"
 
 	paho "github.com/eclipse/paho.mqtt.golang"
@@ -102,11 +103,21 @@ func (c *Client) HandleMessage(_ paho.Client, msg paho.Message) {
 		return
 	}
 
-	// store message for query
+	//  Compose message
 	message := Message{
 		Timestamp: time.Now(),
 		Value:     string(msg.Payload()),
 	}
+
+	//  TODO: Fix this hack to reject messages without a valid CBOR Base64 Payload.
+	//  CBOR Payloads must begin with 0xA1 (CBOR Map), which is encoded in Base64 as "o...".
+	//  Join Messages don't have a payload and will also be rejected.
+	if !strings.Contains(message.Value, "\"frm_payload\":\"o") {
+		log.DefaultLogger.Debug(fmt.Sprintf("Missing or invalid payload: %s", message.Value))
+		return
+	}
+
+	// store message for query
 	topic.messages = append(topic.messages, message)
 
 	// limit the size of the retained messages
