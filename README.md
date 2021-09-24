@@ -30,14 +30,25 @@ We assume that Message Payloads are encoded in [__CBOR Format__](https://en.wiki
 
 This Data Source should be located in the __Grafana Plugins Folder__...
 
-```text
-C:\Program Files\GrafanaLabs\grafana\data\plugins\the-things-network-datasource
+```bash
+##  For Linux: Need "sudo" to access this folder
+cd /var/lib/grafana/plugins
+
+##  For Windows: Need to grant "Full Control" permission to "Users" group for this folder
+cd C:\Program Files\GrafanaLabs\grafana\data\plugins
+
+##  Download source files for The Things Network Data Source
+git clone --recursive https://github.com/lupyuen/the-things-network-datasource
 ```
 
 To __build the Data Source__...
 
 ```bash
+##  Install the dependencies
+cd the-things-network-datasource
 yarn install
+
+##  Build the Data Source (React + Go)
 yarn build
 ```
 
@@ -46,6 +57,10 @@ yarn build
 To __enable the Data Source__, edit...
 
 ```text
+## For Linux:
+/usr/share/grafana/conf/defaults.ini
+
+## For Windows:
 C:\Program Files\GrafanaLabs\grafana\conf\defaults.ini
 ```
 
@@ -92,6 +107,10 @@ mosquitto_sub -h au1.cloud.thethings.network -t "#" -u "luppy-application@ttn" -
 In case of problems, check the __Grafana Log__ at...
 
 ```text
+## For Linux:
+/var/log/grafana/grafana.log
+
+## For Windows:
 C:\Program Files\GrafanaLabs\grafana\data\log\grafana.log
 ```
 
