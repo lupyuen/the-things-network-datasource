@@ -110,9 +110,16 @@ func (c *Client) HandleMessage(_ paho.Client, msg paho.Message) {
 	}
 
 	//  TODO: Fix this hack to reject messages without a valid CBOR Base64 Payload.
-	//  CBOR Payloads must begin with 0xA1 (CBOR Map), which is encoded in Base64 as "o...".
+	//  CBOR Payloads must begin with a CBOR Map: 0xA1 or 0xA2 or 0xA3 or ...
+	//  So the Base64 Encoding must begin with "o" or "p" or "q" or ...
+	//  We stop at 0xB1 (Base64 "s") because we assume LoRaWAN Payloads will be under 50 bytes.
 	//  Join Messages don't have a payload and will also be rejected.
-	if !strings.Contains(message.Value, "\"frm_payload\":\"o") {
+	const frm_payload = "\"frm_payload\":\""
+	if !strings.Contains(message.Value, frm_payload+"o") &&
+		!strings.Contains(message.Value, frm_payload+"p") &&
+		!strings.Contains(message.Value, frm_payload+"q") &&
+		!strings.Contains(message.Value, frm_payload+"r") &&
+		!strings.Contains(message.Value, frm_payload+"s") {
 		log.DefaultLogger.Debug(fmt.Sprintf("Missing or invalid payload: %s", message.Value))
 		return
 	}
