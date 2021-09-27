@@ -221,12 +221,104 @@ Skip running new stream (already exists).features path=all
 Client subscribed user=1 client=14335827-eb07-4f75-890c-4df7991a031b channel=1/ds/09RFPONnk/all
 
 Received MQTT Message for topic v3/luppy-application@ttn/devices/eui-YOUR_DEVICE_EUI/join
-Missing or invalid payload: {\"end_device_ids\":{\"device_id\":\"eui-YOUR_DEVICE_EUI\",\"application_ids\":{\"application_id\":\"luppy-application\"},\"dev_eui\":\"YOUR_DEVICE_EUI\",\"join_eui\":\"0000000000000000\",\"dev_addr\":\"YOUR_DEV_ADDR\"},\"correlation_ids\":[\"as:up:...\",\"gs:conn:...\",\"gs:up:host:...\",\"gs:uplink:...\",\"ns:uplink:...\",\"rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...\",\"rpc:/ttn.lorawan.v3.NsAs/HandleUplink:...\"],\"received_at\":\"2021-09-25T13:45:57.644920529Z\",\"join_accept\":{\"session_key_id\":\"YOUR_SESSION_KEY_ID\",\"received_at\":\"2021-09-25T13:45:55.836190350Z\"}}
+Missing or invalid payload: 
+{
+    "end_device_ids": {
+        "device_id": "eui-YOUR_DEVICE_EUI",
+        "application_ids": {
+            "application_id": "luppy-application"
+        },
+        "dev_eui": "YOUR_DEVICE_EUI",
+        "join_eui": "0000000000000000",
+        "dev_addr": "YOUR_DEV_ADDR"
+    },
+    "correlation_ids": [
+        "as:up:...",
+        "gs:conn:...",
+        "gs:up:host:...",
+        "gs:uplink:...",
+        "ns:uplink:...",
+        "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...",
+        "rpc:/ttn.lorawan.v3.NsAs/HandleUplink:..."
+    ],
+    "received_at": "2021-09-25T13:45:57.644920529Z",
+    "join_accept": {
+        "session_key_id": "YOUR_SESSION_KEY_ID",
+        "received_at": "2021-09-25T13:45:55.836190350Z"
+    }
+}
 
 Received MQTT Message for topic v3/luppy-application@ttn/devices/eui-YOUR_DEVICE_EUI/up
 Stream MQTT Message for topic all
 ToFrame: topic=all
-jsonMessagesToFrame: topic=all, msg={\"end_device_ids\":{\"device_id\":\"eui-YOUR_DEVICE_EUI\",\"application_ids\":{\"application_id\":\"luppy-application\"},\"dev_eui\":\"YOUR_DEVICE_EUI\",\"join_eui\":\"0000000000000000\",\"dev_addr\":\"YOUR_DEV_ADDR\"},\"correlation_ids\":[\"as:up:...\",\"gs:conn:...\",\"gs:up:host:...\",\"gs:uplink:...\",\"ns:uplink:...\",\"rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...\",\"rpc:/ttn.lorawan.v3.NsAs/HandleUplink:...\"],\"received_at\":\"2021-09-25T13:46:17.083379844Z\",\"uplink_message\":{\"session_key_id\":\"YOUR_SESSION_KEY_ID\",\"f_port\":2,\"frm_payload\":\"omF0GQTSYWwZA+g=\",\"rx_metadata\":[{\"gateway_ids\":{\"gateway_id\":\"luppy-wisgate-rak7248\",\"eui\":\"YOUR_EUI\"},\"time\":\"2021-09-25T14:24:38.670302Z\",\"timestamp\":2303670303,\"rssi\":-52,\"channel_rssi\":-52,\"snr\":11.8,\"location\":{\"latitude\":1.27125,\"longitude\":103.80795,\"altitude\":70,\"source\":\"SOURCE_REGISTRY\"},\"uplink_token\":\"...\",\"channel_index\":2}],\"settings\":{\"data_rate\":{\"lora\":{\"bandwidth\":125000,\"spreading_factor\":10}},\"data_rate_index\":2,\"coding_rate\":\"4/5\",\"frequency\":\"922200000\",\"timestamp\":2303670303,\"time\":\"2021-09-25T14:24:38.670302Z\"},\"received_at\":\"2021-09-25T13:46:16.874919502Z\",\"consumed_airtime\":\"0.370688s\",\"network_ids\":{\"net_id\":\"000013\",\"tenant_id\":\"ttn\",\"cluster_id\":\"ttn-au1\"}}}
+jsonMessagesToFrame: topic=all, msg=
+{
+    "end_device_ids": {
+        "device_id": "eui-YOUR_DEVICE_EUI",
+        "application_ids": {
+            "application_id": "luppy-application"
+        },
+        "dev_eui": "YOUR_DEVICE_EUI",
+        "join_eui": "0000000000000000",
+        "dev_addr": "YOUR_DEV_ADDR"
+    },
+    "correlation_ids": [
+        "as:up:...",
+        "gs:conn:...",
+        "gs:up:host:...",
+        "gs:uplink:...",
+        "ns:uplink:...",
+        "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...",
+        "rpc:/ttn.lorawan.v3.NsAs/HandleUplink:..."
+    ],
+    "received_at": "2021-09-25T13:46:17.083379844Z",
+    "uplink_message": {
+        "session_key_id": "YOUR_SESSION_KEY_ID",
+        "f_port": 2,
+        "frm_payload": "omF0GQTSYWwZA+g=",
+        "rx_metadata": [
+            {
+                "gateway_ids": {
+                    "gateway_id": "luppy-wisgate-rak7248",
+                    "eui": "YOUR_EUI"
+                },
+                "time": "2021-09-25T14:24:38.670302Z",
+                "timestamp": 2303670303,
+                "rssi": -52,
+                "channel_rssi": -52,
+                "snr": 11.8,
+                "location": {
+                    "latitude": 1.27125,
+                    "longitude": 103.80795,
+                    "altitude": 70,
+                    "source": "SOURCE_REGISTRY"
+                },
+                "uplink_token": "...",
+                "channel_index": 2
+            }
+        ],
+        "settings": {
+            "data_rate": {
+                "lora": {
+                    "bandwidth": 125000,
+                    "spreading_factor": 10
+                }
+            },
+            "data_rate_index": 2,
+            "coding_rate": "4/5",
+            "frequency": "922200000",
+            "timestamp": 2303670303,
+            "time": "2021-09-25T14:24:38.670302Z"
+        },
+        "received_at": "2021-09-25T13:46:16.874919502Z",
+        "consumed_airtime": "0.370688s",
+        "network_ids": {
+            "net_id": "000013",
+            "tenant_id": "ttn",
+            "cluster_id": "ttn-au1"
+        }
+    }
+}
 payload: [162 97 116 25 4 210 97 108 25 3 232]
 CBOR decoded: map[device_id:eui-YOUR_DEVICE_EUI l:1000 t:1234]
 jsonMessagesToFrame: Frame=&{Name:all Fields:[0xc0003d1b60 0xc0003d1c20 0xc0003d1bf0 0xc0003d1bc0] RefID: Meta:<nil>}
@@ -236,7 +328,74 @@ jsonMessagesToFrame: Frame=&{Name:all Fields:[0xc0003d1b60 0xc0003d1c20 0xc0003d
   field=&{Name:t Labels: Config:<nil> vector:0xc000410100}
 Sending message to client for topic all
 ToFrame: topic=all
-jsonMessagesToFrame: topic=all, msg={\"end_device_ids\":{\"device_id\":\"eui-YOUR_DEVICE_EUI\",\"application_ids\":{\"application_id\":\"luppy-application\"},\"dev_eui\":\"YOUR_DEVICE_EUI\",\"join_eui\":\"0000000000000000\",\"dev_addr\":\"YOUR_DEV_ADDR\"},\"correlation_ids\":[\"as:up:...\",\"gs:conn:...\",\"gs:up:host:...\",\"gs:uplink:...\",\"ns:uplink:...\",\"rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...\",\"rpc:/ttn.lorawan.v3.NsAs/HandleUplink:...\"],\"received_at\":\"2021-09-25T13:46:17.083379844Z\",\"uplink_message\":{\"session_key_id\":\"YOUR_SESSION_KEY_ID\",\"f_port\":2,\"frm_payload\":\"omF0GQTSYWwZA+g=\",\"rx_metadata\":[{\"gateway_ids\":{\"gateway_id\":\"luppy-wisgate-rak7248\",\"eui\":\"YOUR_EUI\"},\"time\":\"2021-09-25T14:24:38.670302Z\",\"timestamp\":2303670303,\"rssi\":-52,\"channel_rssi\":-52,\"snr\":11.8,\"location\":{\"latitude\":1.27125,\"longitude\":103.80795,\"altitude\":70,\"source\":\"SOURCE_REGISTRY\"},\"uplink_token\":\"...\",\"channel_index\":2}],\"settings\":{\"data_rate\":{\"lora\":{\"bandwidth\":125000,\"spreading_factor\":10}},\"data_rate_index\":2,\"coding_rate\":\"4/5\",\"frequency\":\"922200000\",\"timestamp\":2303670303,\"time\":\"2021-09-25T14:24:38.670302Z\"},\"received_at\":\"2021-09-25T13:46:16.874919502Z\",\"consumed_airtime\":\"0.370688s\",\"network_ids\":{\"net_id\":\"000013\",\"tenant_id\":\"ttn\",\"cluster_id\":\"ttn-au1\"}}}
+jsonMessagesToFrame: topic=all, msg=
+{
+    "end_device_ids": {
+        "device_id": "eui-YOUR_DEVICE_EUI",
+        "application_ids": {
+            "application_id": "luppy-application"
+        },
+        "dev_eui": "YOUR_DEVICE_EUI",
+        "join_eui": "0000000000000000",
+        "dev_addr": "YOUR_DEV_ADDR"
+    },
+    "correlation_ids": [
+        "as:up:...",
+        "gs:conn:...",
+        "gs:up:host:...",
+        "gs:uplink:...",
+        "ns:uplink:...",
+        "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...",
+        "rpc:/ttn.lorawan.v3.NsAs/HandleUplink:..."
+    ],
+    "received_at": "2021-09-25T13:46:17.083379844Z",
+    "uplink_message": {
+        "session_key_id": "YOUR_SESSION_KEY_ID",
+        "f_port": 2,
+        "frm_payload": "omF0GQTSYWwZA+g=",
+        "rx_metadata": [
+            {
+                "gateway_ids": {
+                    "gateway_id": "luppy-wisgate-rak7248",
+                    "eui": "YOUR_EUI"
+                },
+                "time": "2021-09-25T14:24:38.670302Z",
+                "timestamp": 2303670303,
+                "rssi": -52,
+                "channel_rssi": -52,
+                "snr": 11.8,
+                "location": {
+                    "latitude": 1.27125,
+                    "longitude": 103.80795,
+                    "altitude": 70,
+                    "source": "SOURCE_REGISTRY"
+                },
+                "uplink_token": "...",
+                "channel_index": 2
+            }
+        ],
+        "settings": {
+            "data_rate": {
+                "lora": {
+                    "bandwidth": 125000,
+                    "spreading_factor": 10
+                }
+            },
+            "data_rate_index": 2,
+            "coding_rate": "4/5",
+            "frequency": "922200000",
+            "timestamp": 2303670303,
+            "time": "2021-09-25T14:24:38.670302Z"
+        },
+        "received_at": "2021-09-25T13:46:16.874919502Z",
+        "consumed_airtime": "0.370688s",
+        "network_ids": {
+            "net_id": "000013",
+            "tenant_id": "ttn",
+            "cluster_id": "ttn-au1"
+        }
+    }
+}
 payload: [162 97 116 25 4 210 97 108 25 3 232]
 CBOR decoded: map[device_id:eui-YOUR_DEVICE_EUI l:1000 t:1234]
 jsonMessagesToFrame: Frame=&{Name:all Fields:[0xc000270ab0 0xc000270b70 0xc000270b40 0xc000270b10] RefID: Meta:<nil>}
@@ -248,7 +407,74 @@ jsonMessagesToFrame: Frame=&{Name:all Fields:[0xc000270ab0 0xc000270b70 0xc00027
 Received MQTT Message for topic v3/luppy-application@ttn/devices/eui-YOUR_DEVICE_EUI/up
 Stream MQTT Message for topic all
 ToFrame: topic=all
-jsonMessagesToFrame: topic=all, msg={\"end_device_ids\":{\"device_id\":\"eui-YOUR_DEVICE_EUI\",\"application_ids\":{\"application_id\":\"luppy-application\"},\"dev_eui\":\"YOUR_DEVICE_EUI\",\"join_eui\":\"0000000000000000\",\"dev_addr\":\"YOUR_DEV_ADDR\"},\"correlation_ids\":[\"as:up:...\",\"gs:conn:...\",\"gs:up:host:...\",\"gs:uplink:...\",\"ns:uplink:...\",\"rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...\",\"rpc:/ttn.lorawan.v3.NsAs/HandleUplink:...\"],\"received_at\":\"2021-09-25T13:46:41.932243351Z\",\"uplink_message\":{\"session_key_id\":\"YOUR_SESSION_KEY_ID\",\"f_port\":2,\"f_cnt\":1,\"frm_payload\":\"omF0GQU2YWwZBEw=\",\"rx_metadata\":[{\"gateway_ids\":{\"gateway_id\":\"luppy-wisgate-rak7248\",\"eui\":\"YOUR_EUI\"},\"time\":\"2021-09-25T14:25:28.495276Z\",\"timestamp\":2328495276,\"rssi\":-51,\"channel_rssi\":-51,\"snr\":11.5,\"location\":{\"latitude\":1.27125,\"longitude\":103.80795,\"altitude\":70,\"source\":\"SOURCE_REGISTRY\"},\"uplink_token\":\"...\"}],\"settings\":{\"data_rate\":{\"lora\":{\"bandwidth\":125000,\"spreading_factor\":10}},\"data_rate_index\":2,\"coding_rate\":\"4/5\",\"frequency\":\"923200000\",\"timestamp\":2328495276,\"time\":\"2021-09-25T14:25:28.495276Z\"},\"received_at\":\"2021-09-25T13:46:41.706545356Z\",\"consumed_airtime\":\"0.370688s\",\"network_ids\":{\"net_id\":\"000013\",\"tenant_id\":\"ttn\",\"cluster_id\":\"ttn-au1\"}}}
+jsonMessagesToFrame: topic=all, msg=
+{
+    "end_device_ids": {
+        "device_id": "eui-YOUR_DEVICE_EUI",
+        "application_ids": {
+            "application_id": "luppy-application"
+        },
+        "dev_eui": "YOUR_DEVICE_EUI",
+        "join_eui": "0000000000000000",
+        "dev_addr": "YOUR_DEV_ADDR"
+    },
+    "correlation_ids": [
+        "as:up:...",
+        "gs:conn:...",
+        "gs:up:host:...",
+        "gs:uplink:...",
+        "ns:uplink:...",
+        "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...",
+        "rpc:/ttn.lorawan.v3.NsAs/HandleUplink:..."
+    ],
+    "received_at": "2021-09-25T13:46:41.932243351Z",
+    "uplink_message": {
+        "session_key_id": "YOUR_SESSION_KEY_ID",
+        "f_port": 2,
+        "f_cnt": 1,
+        "frm_payload": "omF0GQU2YWwZBEw=",
+        "rx_metadata": [
+            {
+                "gateway_ids": {
+                    "gateway_id": "luppy-wisgate-rak7248",
+                    "eui": "YOUR_EUI"
+                },
+                "time": "2021-09-25T14:25:28.495276Z",
+                "timestamp": 2328495276,
+                "rssi": -51,
+                "channel_rssi": -51,
+                "snr": 11.5,
+                "location": {
+                    "latitude": 1.27125,
+                    "longitude": 103.80795,
+                    "altitude": 70,
+                    "source": "SOURCE_REGISTRY"
+                },
+                "uplink_token": "..."
+            }
+        ],
+        "settings": {
+            "data_rate": {
+                "lora": {
+                    "bandwidth": 125000,
+                    "spreading_factor": 10
+                }
+            },
+            "data_rate_index": 2,
+            "coding_rate": "4/5",
+            "frequency": "923200000",
+            "timestamp": 2328495276,
+            "time": "2021-09-25T14:25:28.495276Z"
+        },
+        "received_at": "2021-09-25T13:46:41.706545356Z",
+        "consumed_airtime": "0.370688s",
+        "network_ids": {
+            "net_id": "000013",
+            "tenant_id": "ttn",
+            "cluster_id": "ttn-au1"
+        }
+    }
+}
 payload: [162 97 116 25 5 54 97 108 25 4 76]
 CBOR decoded: map[device_id:eui-YOUR_DEVICE_EUI l:1100 t:1334]
 jsonMessagesToFrame: Frame=&{Name:all Fields:[0xc0002b0ab0 0xc0002b0b70 0xc0002b0b40 0xc0002b0b10] RefID: Meta:<nil>}
@@ -259,12 +485,147 @@ jsonMessagesToFrame: Frame=&{Name:all Fields:[0xc0002b0ab0 0xc0002b0b70 0xc0002b
 Sending message to client for topic all
 
 Received MQTT Message for topic v3/luppy-application@ttn/devices/eui-YOUR_DEVICE_EUI/up
-Missing or invalid payload: {\"end_device_ids\":{\"device_id\":\"eui-YOUR_DEVICE_EUI\",\"application_ids\":{\"application_id\":\"luppy-application\"},\"dev_eui\":\"YOUR_DEVICE_EUI\",\"join_eui\":\"0000000000000000\",\"dev_addr\":\"YOUR_DEV_ADDR\"},\"correlation_ids\":[\"as:up:...\",\"gs:conn:...\",\"gs:up:host:...\",\"gs:uplink:...\",\"ns:uplink:...\",\"rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...\",\"rpc:/ttn.lorawan.v3.NsAs/HandleUplink:...\"],\"received_at\":\"2021-09-25T13:46:47.619509371Z\",\"uplink_message\":{\"session_key_id\":\"YOUR_SESSION_KEY_ID\",\"f_cnt\":2,\"frm_payload\":\"Y7c=\",\"rx_metadata\":[{\"gateway_ids\":{\"gateway_id\":\"luppy-wisgate-rak7248\",\"eui\":\"YOUR_EUI\"},\"time\":\"2021-09-25T14:25:40.196422Z\",\"timestamp\":2334196423,\"rssi\":-52,\"channel_rssi\":-52,\"snr\":11.2,\"location\":{\"latitude\":1.27125,\"longitude\":103.80795,\"altitude\":70,\"source\":\"SOURCE_REGISTRY\"},\"uplink_token\":\"...\",\"channel_index\":1}],\"settings\":{\"data_rate\":{\"lora\":{\"bandwidth\":125000,\"spreading_factor\":10}},\"data_rate_index\":2,\"coding_rate\":\"4/5\",\"frequency\":\"923400000\",\"timestamp\":2334196423,\"time\":\"2021-09-25T14:25:40.196422Z\"},\"received_at\":\"2021-09-25T13:46:47.408241526Z\",\"consumed_airtime\":\"0.329728s\",\"network_ids\":{\"net_id\":\"000013\",\"tenant_id\":\"ttn\",\"cluster_id\":\"ttn-au1\"}}}
+Missing or invalid payload: 
+{
+    "end_device_ids": {
+        "device_id": "eui-YOUR_DEVICE_EUI",
+        "application_ids": {
+            "application_id": "luppy-application"
+        },
+        "dev_eui": "YOUR_DEVICE_EUI",
+        "join_eui": "0000000000000000",
+        "dev_addr": "YOUR_DEV_ADDR"
+    },
+    "correlation_ids": [
+        "as:up:...",
+        "gs:conn:...",
+        "gs:up:host:...",
+        "gs:uplink:...",
+        "ns:uplink:...",
+        "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...",
+        "rpc:/ttn.lorawan.v3.NsAs/HandleUplink:..."
+    ],
+    "received_at": "2021-09-25T13:46:47.619509371Z",
+    "uplink_message": {
+        "session_key_id": "YOUR_SESSION_KEY_ID",
+        "f_cnt": 2,
+        "frm_payload": "Y7c=",
+        "rx_metadata": [
+            {
+                "gateway_ids": {
+                    "gateway_id": "luppy-wisgate-rak7248",
+                    "eui": "YOUR_EUI"
+                },
+                "time": "2021-09-25T14:25:40.196422Z",
+                "timestamp": 2334196423,
+                "rssi": -52,
+                "channel_rssi": -52,
+                "snr": 11.2,
+                "location": {
+                    "latitude": 1.27125,
+                    "longitude": 103.80795,
+                    "altitude": 70,
+                    "source": "SOURCE_REGISTRY"
+                },
+                "uplink_token": "...",
+                "channel_index": 1
+            }
+        ],
+        "settings": {
+            "data_rate": {
+                "lora": {
+                    "bandwidth": 125000,
+                    "spreading_factor": 10
+                }
+            },
+            "data_rate_index": 2,
+            "coding_rate": "4/5",
+            "frequency": "923400000",
+            "timestamp": 2334196423,
+            "time": "2021-09-25T14:25:40.196422Z"
+        },
+        "received_at": "2021-09-25T13:46:47.408241526Z",
+        "consumed_airtime": "0.329728s",
+        "network_ids": {
+            "net_id": "000013",
+            "tenant_id": "ttn",
+            "cluster_id": "ttn-au1"
+        }
+    }
+}
 
 Received MQTT Message for topic v3/luppy-application@ttn/devices/eui-YOUR_DEVICE_EUI/up
 Stream MQTT Message for topic all
 ToFrame: topic=all
-jsonMessagesToFrame: topic=all, msg={\"end_device_ids\":{\"device_id\":\"eui-YOUR_DEVICE_EUI\",\"application_ids\":{\"application_id\":\"luppy-application\"},\"dev_eui\":\"YOUR_DEVICE_EUI\",\"join_eui\":\"0000000000000000\",\"dev_addr\":\"YOUR_DEV_ADDR\"},\"correlation_ids\":[\"as:up:...\",\"gs:conn:...\",\"gs:up:host:...\",\"gs:uplink:...\",\"ns:uplink:...\",\"rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...\",\"rpc:/ttn.lorawan.v3.NsAs/HandleUplink:...\"],\"received_at\":\"2021-09-25T13:47:12.461507414Z\",\"uplink_message\":{\"session_key_id\":\"YOUR_SESSION_KEY_ID\",\"f_port\":2,\"f_cnt\":3,\"frm_payload\":\"omF0GQTcYWwZA/I=\",\"rx_metadata\":[{\"gateway_ids\":{\"gateway_id\":\"luppy-wisgate-rak7248\",\"eui\":\"YOUR_EUI\"},\"time\":\"2021-09-25T14:26:29.039893Z\",\"timestamp\":2359039893,\"rssi\":-52,\"channel_rssi\":-52,\"snr\":11.5,\"location\":{\"latitude\":1.27125,\"longitude\":103.80795,\"altitude\":70,\"source\":\"SOURCE_REGISTRY\"},\"uplink_token\":\"...\",\"channel_index\":4}],\"settings\":{\"data_rate\":{\"lora\":{\"bandwidth\":125000,\"spreading_factor\":10}},\"data_rate_index\":2,\"coding_rate\":\"4/5\",\"frequency\":\"922600000\",\"timestamp\":2359039893,\"time\":\"2021-09-25T14:26:29.039893Z\"},\"received_at\":\"2021-09-25T13:47:12.247172827Z\",\"consumed_airtime\":\"0.370688s\",\"network_ids\":{\"net_id\":\"000013\",\"tenant_id\":\"ttn\",\"cluster_id\":\"ttn-au1\"}}}
+jsonMessagesToFrame: topic=all, msg=
+{
+    "end_device_ids": {
+        "device_id": "eui-YOUR_DEVICE_EUI",
+        "application_ids": {
+            "application_id": "luppy-application"
+        },
+        "dev_eui": "YOUR_DEVICE_EUI",
+        "join_eui": "0000000000000000",
+        "dev_addr": "YOUR_DEV_ADDR"
+    },
+    "correlation_ids": [
+        "as:up:...",
+        "gs:conn:...",
+        "gs:up:host:...",
+        "gs:uplink:...",
+        "ns:uplink:...",
+        "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...",
+        "rpc:/ttn.lorawan.v3.NsAs/HandleUplink:..."
+    ],
+    "received_at": "2021-09-25T13:47:12.461507414Z",
+    "uplink_message": {
+        "session_key_id": "YOUR_SESSION_KEY_ID",
+        "f_port": 2,
+        "f_cnt": 3,
+        "frm_payload": "omF0GQTcYWwZA/I=",
+        "rx_metadata": [
+            {
+                "gateway_ids": {
+                    "gateway_id": "luppy-wisgate-rak7248",
+                    "eui": "YOUR_EUI"
+                },
+                "time": "2021-09-25T14:26:29.039893Z",
+                "timestamp": 2359039893,
+                "rssi": -52,
+                "channel_rssi": -52,
+                "snr": 11.5,
+                "location": {
+                    "latitude": 1.27125,
+                    "longitude": 103.80795,
+                    "altitude": 70,
+                    "source": "SOURCE_REGISTRY"
+                },
+                "uplink_token": "...",
+                "channel_index": 4
+            }
+        ],
+        "settings": {
+            "data_rate": {
+                "lora": {
+                    "bandwidth": 125000,
+                    "spreading_factor": 10
+                }
+            },
+            "data_rate_index": 2,
+            "coding_rate": "4/5",
+            "frequency": "922600000",
+            "timestamp": 2359039893,
+            "time": "2021-09-25T14:26:29.039893Z"
+        },
+        "received_at": "2021-09-25T13:47:12.247172827Z",
+        "consumed_airtime": "0.370688s",
+        "network_ids": {
+            "net_id": "000013",
+            "tenant_id": "ttn",
+            "cluster_id": "ttn-au1"
+        }
+    }
+}
 payload: [162 97 116 25 4 220 97 108 25 3 242]
 CBOR decoded: map[device_id:eui-YOUR_DEVICE_EUI l:1010 t:1244]
 jsonMessagesToFrame: Frame=&{Name:all Fields:[0xc0001dff20 0xc000286030 0xc0001dffb0 0xc000286540] RefID: Meta:<nil>}
@@ -306,21 +667,21 @@ Client (null) received PUBLISH (d0, q0, r0, m0, 'v3/luppy-application@ttn/device
         },
         "dev_eui": "YOUR_DEVICE_EUI",
         "join_eui": "0000000000000000",
-        "dev_addr": "YOUR_DEVICE_ADDR"
+        "dev_addr": "YOUR_DEV_ADDR"
     },
     "correlation_ids": [
-        "as:up:01FG3VK2PAVGQ6YCGSJXV8HNK6",
-        "gs:conn:01FG16A9P2FBKQXR7ESXHQPNDT",
-        "gs:up:host:01FG16ACECQ0XN03MFP434WW68",
-        "gs:uplink:01FG3VK0XH1FY4SRFY6AFMHJ1V",
-        "ns:uplink:01FG3VK0XKZNTX4ZG2DC4J8HYH",
-        "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01FG3VK0XKY6CET6ACA4F9MRBP",
-        "rpc:/ttn.lorawan.v3.NsAs/HandleUplink:01FG3VK2P8XJ254ER0YW5XNAQS"
+        "as:up:...",
+        "gs:conn:...",
+        "gs:up:host:...",
+        "gs:uplink:...",
+        "ns:uplink:...",
+        "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...",
+        "rpc:/ttn.lorawan.v3.NsAs/HandleUplink:..."
     ],
-    "received_at": "2021-09-21T09:39:32.683525105Z",
+    "received_at": "2021-09-25T13:45:57.644920529Z",
     "join_accept": {
-        "session_key_id": "YOUR_SESSION_KEY",
-        "received_at": "2021-09-21T09:39:30.867270904Z"
+        "session_key_id": "YOUR_SESSION_KEY_ID",
+        "received_at": "2021-09-25T13:45:55.836190350Z"
     }
 }
 ```
@@ -340,33 +701,33 @@ Client (null) received PUBLISH (d0, q0, r0, m0, 'v3/luppy-application@ttn/device
         },
         "dev_eui": "YOUR_DEVICE_EUI",
         "join_eui": "0000000000000000",
-        "dev_addr": "YOUR_DEVICE_ADDR"
+        "dev_addr": "YOUR_DEV_ADDR"
     },
     "correlation_ids": [
-        "as:up:01FG3VM3J6N619KKZA5G6ZBQTG",
-        "gs:conn:01FG16A9P2FBKQXR7ESXHQPNDT",
-        "gs:up:host:01FG16ACECQ0XN03MFP434WW68",
-        "gs:uplink:01FG3VM3BS2J5WRNYJ1WDT7EMN",
-        "ns:uplink:01FG3VM3BVHF7K9RW64S5YB92K",
-        "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01FG3VM3BTJHWP66ZRPM464NAZ",
-        "rpc:/ttn.lorawan.v3.NsAs/HandleUplink:01FG3VM3J6QPFGF0354A0STABY"
+        "as:up:...",
+        "gs:conn:...",
+        "gs:up:host:...",
+        "gs:uplink:...",
+        "ns:uplink:...",
+        "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:...",
+        "rpc:/ttn.lorawan.v3.NsAs/HandleUplink:..."
     ],
-    "received_at": "2021-09-21T09:40:06.343617863Z",
+    "received_at": "2021-09-25T13:46:17.083379844Z",
     "uplink_message": {
-        "session_key_id": "YOUR_SESSION_KEY",
+        "session_key_id": "YOUR_SESSION_KEY_ID",
         "f_port": 2,
-        "frm_payload": "AAAAAAA=",
+        "frm_payload": "omF0GQTSYWwZA+g=",
         "rx_metadata": [
             {
                 "gateway_ids": {
                     "gateway_id": "luppy-wisgate-rak7248",
-                    "eui": "YOUR_GATEWAY_EUI"
+                    "eui": "YOUR_EUI"
                 },
-                "time": "2021-09-21T10:33:46.302650Z",
-                "timestamp": 2520907181,
-                "rssi": -53,
-                "channel_rssi": -53,
-                "snr": 12.8,
+                "time": "2021-09-25T14:24:38.670302Z",
+                "timestamp": 2303670303,
+                "rssi": -52,
+                "channel_rssi": -52,
+                "snr": 11.8,
                 "location": {
                     "latitude": 1.27125,
                     "longitude": 103.80795,
@@ -387,11 +748,11 @@ Client (null) received PUBLISH (d0, q0, r0, m0, 'v3/luppy-application@ttn/device
             "data_rate_index": 2,
             "coding_rate": "4/5",
             "frequency": "922200000",
-            "timestamp": 2520907181,
-            "time": "2021-09-21T10:33:46.302650Z"
+            "timestamp": 2303670303,
+            "time": "2021-09-25T14:24:38.670302Z"
         },
-        "received_at": "2021-09-21T09:40:06.139046029Z",
-        "consumed_airtime": "0.329728s",
+        "received_at": "2021-09-25T13:46:16.874919502Z",
+        "consumed_airtime": "0.370688s",
         "network_ids": {
             "net_id": "000013",
             "tenant_id": "ttn",
